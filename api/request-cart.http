@@ -1,0 +1,46 @@
+### Create Cart
+POST http://localhost:8800/api/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWYyZWYxYmU5NGYxMTUwYTliOWQ1ZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTU2NDc5OTIsImV4cCI6MTY1NTkwNzE5Mn0.fa9N-atrO98zHBX82rpIj8a6nAGXJSzNHCtfo8dlAI83
+
+{
+    "userId": "62af2ef1be94f1150a9b9d5e",
+    "products": [
+        {
+            "productId": "62af21e2484de8bed8e0454a",
+            "quantity": "3"
+        }
+    ]
+}
+
+### Update Cart
+PATCH http://localhost:8800/api/cart/62af2fa1be94f1150a9b9d68
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWYyZWYxYmU5NGYxMTUwYTliOWQ1ZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTU2NDg1ODMsImV4cCI6MTY1NTkwNzc4M30.46V89-XIj2R8xgEiHHbrucletABCB6iZWIRbCZdU7GI
+
+{
+    "userId": "62af2ef1be94f1150a9b9d5e",
+    "products": [
+        {
+            "productId": "62af21e2484de8bed8e0454a",
+            "quantity": "3"
+        },
+        {
+            "proudctId": "62af2200484de8bed8e0454c",
+            "quantity": "1"
+        }
+    ]
+}
+
+### Delete Cart (can be deleted by adding cart owner's id in body)
+DELETE http://localhost:8800/api/cart/62af2fa1be94f1150a9b9d68
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0ODg0NywiZXhwIjoxNjU1OTA4MDQ3fQ.OFSOPHxExAweJB729lwb7f5uR1-OI3ylZ7JUue4qYfA
+
+
+#### find User's cart (can be found by adding cart owner's id in body)
+GET http://localhost:8800/api/cart/user-cart/62af2ef1be94f1150a9b9d5e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0ODg0NywiZXhwIjoxNjU1OTA4MDQ3fQ.OFSOPHxExAweJB729lwb7f5uR1-OI3ylZ7JUue4qYfA
+
+### find all carts
+GET http://localhost:8800/api/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0ODg0NywiZXhwIjoxNjU1OTA4MDQ3fQ.OFSOPHxExAweJB729lwb7f5uR1-OI3ylZ7JUue4qYfA

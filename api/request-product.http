@@ -1,0 +1,41 @@
+### Create Product
+POST http://localhost:8800/api/product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+{
+    "title": "test product",
+	"desc": "Nice",
+	"img": "image1.png",
+	"categories": ["desktop", "mobile"],
+	"price": 34000
+}
+
+### Update Product
+PATCH http://localhost:8800/api/product/62af2200484de8bed8e0454c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+{
+    "title": "updated test",
+	"img": "image2.png",
+	"price": 34200
+}
+
+### Find by id
+GET http://localhost:8800/api/product/62af2200484de8bed8e0454c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+### Find All products
+GET http://localhost:8800/api/product/by-query/list
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+
+### Find all products by-query
+GET http://localhost:8800/api/product/by-query/list?category=phone
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+
+### Find all products by-query
+GET http://localhost:8800/api/product/by-query/list?limit=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
