@@ -1,3 +1,4 @@
+import { stripeRoute } from './core/stripe.routes';
 import { cartRoute } from './cart/cart.routes';
 import { authRoute, userRoute } from './user/user.routes';
 import bodyParser from 'body-parser';
@@ -32,4 +33,5 @@ app.listen(port, host, () => {
 	userRoute(app);
 	productRoute(app);
 	cartRoute(app);
+	stripeRoute(app);
 });

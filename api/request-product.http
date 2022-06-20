@@ -4,11 +4,13 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
 
 {
-    "title": "test product",
-	"desc": "Nice",
-	"img": "image1.png",
-	"categories": ["desktop", "mobile"],
-	"price": 34000
+    "title": "yellow shirt 1",
+	"desc": "yellow shirt desc",
+	"img": "https://images.pexels.com/photos/720606/pexels-photo-720606.jpeg?auto=compress&cs=tinysrgb&w=600",
+	"categories": ["T-shirt"],
+	"color": ["yellow", "orange"],
+	"size": ["S"],
+	"price": 8900
 }
 
 ### Update Product
@@ -17,8 +19,12 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
 
 {
-    "title": "updated test",
-	"img": "image2.png",
+    "title": "Levis Jeans",
+	"desc": "Levis Jeans desc",
+	"img": "https://www.pexels.com/photo/smiling-woman-looking-upright-standing-against-yellow-wall-1536619/",
+	"categories": ["jeans"],
+	"size": ["X", "XL"],
+	"color": ["blud", "white"],
 	"price": 34200
 }
 

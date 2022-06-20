@@ -5,9 +5,10 @@ export interface ProductDocument extends mongoose.Document {
 	desc: string;
 	img: string;
 	categories: string[];
-	size: string;
-	color: string;
-	pirce: number;
+	size: string[];
+	color: string[];
+	price: number;
+	inStock: true;
 }
 
 const productSchema = new mongoose.Schema(
@@ -26,17 +27,21 @@ const productSchema = new mongoose.Schema(
 			required: true,
 		},
 		categories: {
-			type: Array,  // ["", ""]
+			type: Array, // ["T-shirt", "jeans"]
 		},
 		size: {
-			type: String,
+			type: Array, // ['XS', 'S', 'M', 'L', 'XL']
 		},
 		color: {
-			type: String,
+			type: Array, // ["white", "black", "yellow"]
 		},
 		price: {
 			type: Number,
 			required: true,
+		},
+		inStock: {
+			type: Boolean,
+			default: true,
 		},
 	},
 	{ timestamps: true },

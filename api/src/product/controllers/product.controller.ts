@@ -61,8 +61,6 @@ export const findProductsHandler = async (req: Request, res: Response) => {
 	const limit = get(req, 'query.limit');
 	const category = get(req, 'query.category');
 
-	console.log(limit, category);
-
 	let products: ProductDocument[] = [];
 
 	if (category) {
