@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import NewsLetter from '../components/NewsLetter';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { mobile } from '../responsive';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
+import { addProduct } from '../redux/cartSlice';
 import { publicRequest } from '../requestMethods';
+import { mobile } from '../responsive';
 
 const Container = styled.div``;
 
@@ -128,7 +129,9 @@ const Product = () => {
 
 	const [quantity, setQuantity] = useState(1);
 	const [color, setColor] = useState('');
-	const [size, setSize] = useState('');
+	const [size, setSize] = useState();
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -140,7 +143,8 @@ const Product = () => {
 		};
 
 		getProduct();
-	}, [productId]);
+		setSize(product?.size && product.size[0]);
+	}, [productId, product]);
 
 	const handleQuantity = (type) => {
 		if (type === 'dec') {
@@ -151,7 +155,9 @@ const Product = () => {
 	};
 
 	const handleAddToCart = () => {
-		// update cart
+		dispatch(
+			addProduct({ ...product, quantity, color, size, price: product.price }),
+		);
 	};
 
 	return (
@@ -179,15 +185,10 @@ const Product = () => {
 						</Filter>
 						<Filter>
 							<FilterTitle>Size</FilterTitle>
-							<FilterSize>
+							<FilterSize onChange={(e) => setSize(e.target.value)}>
 								{product.size?.map((s, index) => (
 									// Select
-									<FilterSizeOption
-										key={index}
-										onChange={(e) => setSize(e.target.value)}
-									>
-										{s}
-									</FilterSizeOption>
+									<FilterSizeOption key={index}>{s}</FilterSizeOption>
 								))}
 							</FilterSize>
 						</Filter>
