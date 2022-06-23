@@ -28,6 +28,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1N
 	"price": 34200
 }
 
+### Delete Product
+DELETE http://localhost:8800/api/product/62af2200484de8bed8e0454c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+
+
 ### Find by id
 GET http://localhost:8800/api/product/62af2200484de8bed8e0454c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg

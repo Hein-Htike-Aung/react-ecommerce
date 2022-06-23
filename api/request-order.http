@@ -1,0 +1,26 @@
+### Create order
+POST http://localhost:8800/api/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTk3MTQ1MSwiZXhwIjoxNjU2MjMwNjUxfQ.A538rT5TyTY-R6fPx5rBRwOXm-IWdHYXznQqTEpBDyY
+
+{
+    "userId": "62aeee9d0b0c1e28658f02cf",
+    "products": [
+        {
+            "productId": "62b073df9db2cdfe9a0a6ff6",
+            "quantity": 7
+        },
+        {
+            "productId": "62b074719db2cdfe9a0a6ff8",
+            "quantity": 3
+        }
+    ],
+    "amount": 1900,
+    "address": "USA",
+    "status": "pending"
+}
+
+
+### Monthly Income
+GET http://localhost:8800/api/order/monthly/income
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTk5MjcxMywiZXhwIjoxNjU2MjUxOTEzfQ.zNiWLrsJjArldYdKZ9GEuYlVQOo9FvMYMXalG-qnNcE

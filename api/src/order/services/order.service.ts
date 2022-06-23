@@ -1,5 +1,11 @@
 import Order, { OrderDocument } from './../model/order.model';
-import { DocumentDefinition, UpdateQuery, QueryOptions } from 'mongoose';
+import {
+	DocumentDefinition,
+	UpdateQuery,
+	QueryOptions,
+	Expression,
+} from 'mongoose';
+import Product from '../../product/models/product.model';
 
 export const createOrder = (input: DocumentDefinition<OrderDocument>) => {
 	try {
@@ -37,9 +43,24 @@ export const findAllOrders = () => {
 	return Order.find();
 };
 
-export const findMonthlyIncomes = async (month: Date) => {
-	return await Order.aggregate([
-		{ $match: { createdAt: { $gte: month } } },
+export const findMonthlyIncomes = async (month: Date, productId?: string) => {
+	const query: Record<string, Expression> = {
+		products: { $elemMatch: { productId } },
+	} as unknown as Record<string, Expression>;
+
+	// Find Monthy Incomes by product Id
+	const andQuery = {
+		$and: [{ createdAt: { $gte: month } }, query],
+	};
+
+	const monthQuery = {
+		createdAt: { $gte: month },
+	};
+
+	return Order.aggregate([
+		{
+			$match: productId ? andQuery : monthQuery,
+		},
 		{
 			$project: {
 				month: { $month: '$createdAt' },

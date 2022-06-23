@@ -62,9 +62,11 @@ export const findMonthlyIncomesHandler = async (
 	req: Request,
 	res: Response,
 ) => {
+	const productId = get(req, 'query.productId');
+
 	const date = new Date();
 	const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
 	const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
 
-	return res.send(await findMonthlyIncomes(previousMonth));
+	return res.send(await findMonthlyIncomes(previousMonth, productId));
 };

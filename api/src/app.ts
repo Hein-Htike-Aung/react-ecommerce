@@ -7,6 +7,7 @@ import express from 'express';
 import connect from './db/connect';
 import log from './log';
 import { productRoute } from './product/product.routes';
+import { orderRoute } from './order/order.routes';
 const cors = require('cors');
 
 const port = process.env.PORT as unknown as number;
@@ -34,4 +35,5 @@ app.listen(port, host, () => {
 	productRoute(app);
 	cartRoute(app);
 	stripeRoute(app);
+	orderRoute(app);
 });

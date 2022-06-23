@@ -18,6 +18,7 @@ export const registerUserSchema = object({
 			.min(6, 'Password is too short - should be 6 chars minimum.')
 			.matches(/^[a-zA-Z0-9_.-]*$/, 'Password can only contain Latin letters.'),
 		isAdmin: boolean(),
+		img: string()
 	}),
 });
 
@@ -40,6 +41,7 @@ export const updateUserSchema = object({
 			.min(6, 'Password is too short - should be 6 chars minimum.')
 			.matches(/^[a-zA-Z0-9_.-]*$/, 'Password can only contain Latin letters.'),
 		isAdmin: boolean(),
+		img: string()
 	}),
 });
 

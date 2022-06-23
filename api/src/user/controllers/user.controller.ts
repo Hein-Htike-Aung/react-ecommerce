@@ -37,7 +37,7 @@ export const loginHandler = async (req: Request, res: Response) => {
 		}
 
 		return res.send({
-			user: validUser.user,
+			...validUser.user,
 			access_token: validUser.access_token,
 		});
 	} catch (e: any) {

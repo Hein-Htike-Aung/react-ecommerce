@@ -13,7 +13,7 @@ export const registerUser = async (input: DocumentDefinition<UserDocument>) => {
 };
 
 export const validateUser = async (username: string, password: string) => {
-	const user = await User.findOne({ username });
+	const user: UserDocument = await User.findOne({ username });
 
 	if (!user) return false;
 
@@ -30,7 +30,7 @@ export const validateUser = async (username: string, password: string) => {
 			process.env.JWT_SEC,
 			{ expiresIn: process.env.ACCESS_TOKEN_TTL },
 		),
-		user: omit(user, 'password'),
+		user: omit(user.toJSON(), 'password'),
 	};
 };
 
