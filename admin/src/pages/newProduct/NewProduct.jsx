@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
 import './newProduct.css';
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from 'firebase/storage';
+import app from '../../firebase';
+import { addProduct } from '../../redux/apiCalls';
+import { useDispatch } from 'react-redux';
+
+const metadata = {
+	contentType: 'image/jpeg',
+};
 
 /* Handle multiple Inputs in one state */
 const NewProduct = () => {
@@ -7,8 +20,15 @@ const NewProduct = () => {
 	const [file, setFile] = useState(null);
 	const [cats, setCats] = useState([]);
 
+	const dispatch = useDispatch();
+
 	const handleChange = (e) => {
-		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+		const priceValue = e.target.name === 'price' && +e.target.value;
+
+		setInputs((prev) => ({
+			...prev,
+			[e.target.name]: priceValue || e.target.value,
+		}));
 	};
 
 	const handleCategories = (e) => {
@@ -17,8 +37,60 @@ const NewProduct = () => {
 
 	const handleCreate = (e) => {
 		e.preventDefault();
-		
-	}
+
+		const fileName = new Date().getTime() + file.name;
+
+		const storage = getStorage(app);
+
+		const storageRef = ref(storage, fileName);
+
+		const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+		uploadTask.on(
+			'state_changed',
+			(snapshot) => {
+				const progress =
+					(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				console.log('Upload is ' + progress + '% done');
+				switch (snapshot.state) {
+					case 'paused':
+						console.log('Upload is paused');
+						break;
+					case 'running':
+						console.log('Upload is running');
+						break;
+					default:
+				}
+			},
+			(error) => {
+				// A full list of error codes is available at
+				// https://firebase.google.com/docs/storage/web/handle-errors
+				switch (error.code) {
+					case 'storage/unauthorized':
+						// User doesn't have permission to access the object
+						break;
+					case 'storage/canceled':
+						// User canceled the upload
+						break;
+
+					// ...
+
+					case 'storage/unknown':
+						// Unknown error occurred, inspect error.serverResponse
+						break;
+					default:
+				}
+			},
+			() => {
+				// Upload completed successfully, now we can get the download URL
+				getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+					const product = { ...inputs, img: downloadURL, categories: cats };
+
+					addProduct(dispatch, product);
+				});
+			},
+		);
+	};
 
 	return (
 		<div className='newProduct'>
@@ -29,7 +101,7 @@ const NewProduct = () => {
 					<input
 						type='file'
 						id='file'
-						onChange={(e) => setFile(e.target.files)[0]}
+						onChange={(e) => setFile(e.target.files[0])}
 					/>
 				</div>
 				<div className='addProductItem'>
@@ -74,7 +146,9 @@ const NewProduct = () => {
 						<option value='false'>No</option>
 					</select>
 				</div>
-				<button onClick={handleCreate} className='addProductButton'>Create</button>
+				<button onClick={handleCreate} className='addProductButton'>
+					Create
+				</button>
 			</form>
 		</div>
 	);

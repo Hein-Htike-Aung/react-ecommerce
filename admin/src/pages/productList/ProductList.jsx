@@ -1,6 +1,6 @@
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { DataGrid } from '@mui/x-data-grid';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteProduct, getProducts } from '../../redux/apiCalls';
@@ -66,15 +66,17 @@ const ProductList = () => {
 
 	return (
 		<div className='productList'>
-			<DataGrid
-				rows={products}
-				columns={columns}
-				disableSelectionOnClick
-				pageSize={8}
-				getRowId={(row) => row._id}
-				rowsPerPageOptions={[5]}
-				checkboxSelection
-			/>
+			{products && (
+				<DataGrid
+					rows={products}
+					columns={columns}
+					disableSelectionOnClick
+					pageSize={8}
+					getRowId={(row) => row._id}
+					rowsPerPageOptions={[5]}
+					checkboxSelection
+				/>
+			)}
 		</div>
 	);
 };

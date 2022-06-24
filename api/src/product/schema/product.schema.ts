@@ -6,7 +6,7 @@ export const createProductSchema = object({
 		desc: string().required('Product Desc is required'),
 		img: string().required('Product Img is rquired'),
 		categories: array().min(1),
-		size: array().min(1),
+		size: array(),
 		color: array().min(1),
 		inStock: boolean(),
 		price: number().required("Product's price is required"),

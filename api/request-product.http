@@ -1,16 +1,16 @@
 ### Create Product
 POST http://localhost:8800/api/product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTY0NDYxOCwiZXhwIjoxNjU1OTAzODE4fQ.Y9iXhO41Rkid_BECmcidbRI0S_ne8m4ANUHCurS5Osg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWU5Zjk1NzljYzNiZGY2MzEzMmY4MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjA0MTIyMywiZXhwIjoxNjU2MzAwNDIzfQ.64y0L3SebQKkKx9HxB5feUI9atBFJKwajwPmtGpKSEk
 
 {
-    "title": "yellow shirt 1",
-	"desc": "yellow shirt desc",
-	"img": "https://images.pexels.com/photos/720606/pexels-photo-720606.jpeg?auto=compress&cs=tinysrgb&w=600",
-	"categories": ["T-shirt"],
-	"color": ["yellow", "orange"],
-	"size": ["S"],
-	"price": 8900
+    "title": "My robot",
+    "desc": "dev",
+    "img": "https://firebasestorage.googleapis.com/v0/b/shop-32a8a.appspot.com/o/1656040976922every-profile.png?alt=media&token=dc883291-6637-4aa9-95ea-60159ce3f3ce",
+    "categories": [
+        "robot"
+    ],
+    "price": 300
 }
 
 ### Update Product

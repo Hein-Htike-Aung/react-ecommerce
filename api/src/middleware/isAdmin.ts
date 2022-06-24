@@ -8,7 +8,7 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
 	verifyToken(req, res, () => {
 		const user = get(req, 'user');
 
-		if (!user.isAdmin)
+		if (!user?.isAdmin)
 			return res.status(403).send({ error: 'You are not allowed to do that' });
 
 		next();
